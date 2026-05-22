@@ -1,0 +1,49 @@
+# 사이트 기본 설정
+title: Smiles Life - 파이썬 자동화 연구소
+description: Smiles Life의 데이터 분석 및 업무 자동화를 위한 파이썬 배우기
+url: "https://takionss.github.io/009-python"
+
+# 테마 설정 (여기서 디자인이 결정됩니다)
+theme: minima
+
+# 부가 설정 (선택 사항)
+permalink: /:categories/:title/
+
+# 페이지네이션(자동 번호 매기기) 설정
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag    # 검색엔진용 메타 태그 자동 생성
+  - jekyll-sitemap    # sitemap.xml 자동 생성
+  - jekyll-feed       # feed.xml (RSS) 자동 생성
+  - jekyll-redirect-from
+
+paginate: 20
+paginate_path: "/page:num/"
+
+# 상단 메뉴에 페이지 자동 추가 방지
+header_pages:
+  - index.html
+
+# ----------------------------------------------------------------
+# [추가된 부분] 언어별 사이트 타이틀 및 설명 설정
+# ----------------------------------------------------------------
+titles:
+  ko: "Smiles Life - 파이썬 자동화 연구소"
+  en: "Smiles Life - Python Automation Lab"
+  ja: "Smiles Life - Python自動化研究所"
+  zh-TW: "Smiles Life - Python 自动化研究所"
+  es: "Smiles Life - Laboratorio de automatización con Python"
+
+descriptions:
+  ko: "Smiles Life의 데이터 분석 및 업무 자동화를 위한 파이썬 배우기"
+  en: "Learning Python for data analysis and work automation by Smiles Life"
+  ja: "Smiles Life의データ分析および業務自動化のためのPython学習"
+  zh-TW: "Smiles Life - 学习 Python 以进行数据分析和业务自动化"
+  es: "Smiles Life - Aprende Python para el análisis de datos y la automatización de tareas con Smiles Life."
+
+random_post_titles:
+  ko: "🎲 이런 글은 어떠세요?"
+  en: "How about these posts?"
+  ja: "こんな記事はいかがですか？"
+  zh-TW: "您觉得这类文章怎么样？"
+  es: "¿Qué te parece este artículo?"
