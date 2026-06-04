@@ -12,4 +12,27 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2837251751819266"
      crossorigin="anonymous"></script>
 
+
+<!-- Multilingual hreflang configuration (Technical SEO) -->
+{% if page.lang %}
+  {% assign active_languages = "ko,en,ja,zh-TW,es" | split: "," %}
+  {% for l in active_languages %}
+    {% if page.lang == "ko" %}
+      {% assign base_path = page.url | replace_first: '/ko/', '/' %}
+    {% else %}
+      {% assign current_lang_prefix = '/' | append: page.lang | append: '/' %}
+      {% assign base_path = page.url | replace_first: current_lang_prefix, '/' %}
+    {% endif %}
+
+    {% if l == "ko" %}
+      {% assign target_path = base_path | replace_first: '/why/', '/why/ko/' %}
+    {% else %}
+      {% assign target_prefix = '/why/' | append: l | append: '/' %}
+      {% assign target_path = base_path | replace_first: '/why/', target_prefix %}
+    {% endif %}
+    <link rel="alternate" hreflang="{{ l }}" href="{{ site.url }}{{ target_path }}" />
+  {% endfor %}
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url }}" />
+{% endif %}
+
 </head>
