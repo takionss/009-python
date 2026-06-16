@@ -52,11 +52,11 @@ header_pages:
 # [추가된 부분] 언어별 사이트 타이틀 및 설명 설정
 # ----------------------------------------------------------------
 titles:
-  ko: "Smiles Life - 파이썬 자동화 연구소"
-  en: "Smiles Life - Python Automation Lab"
-  ja: "Smiles Life - Python自動化研究所"
-  zh-TW: "Smiles Life - Python 自动化研究所"
-  es: "Smiles Life - Laboratorio de automatización con Python"
+  ko: "파이썬 자동화 연구소"
+  en: "Python Automation Lab"
+  ja: "Python自動化研究所"
+  zh-TW: "Python 自动化研究所"
+  es: "Laboratorio de automatización con Python"
 
 descriptions:
   ko: "Smiles Life의 데이터 분석 및 업무 자동화를 위한 파이썬 배우기"
