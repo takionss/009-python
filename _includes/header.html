@@ -1,11 +1,33 @@
 <header class="site-header" role="banner">
   <style>
-    @media screen and (min-width: 769px) {
-      .site-header .wrapper { display: flex; flex-direction: column; }
-      .site-title { padding-bottom: 5px; }
-      .site-nav { position: static !important; align-self: flex-end; }
-      .site-nav .page-link { margin-left: 15px !important; }
-    }
+     @media screen and (min-width: 769px) {
+       .site-header .wrapper { display: flex; flex-direction: column; }
+       .site-title { padding-bottom: 5px; }
+       .site-nav { position: static !important; align-self: flex-end; }
+       .site-nav .page-link { margin-left: 15px !important; }
+     }
++    @media screen and (max-width: 768px) {
++      .site-header .wrapper {
++        display: flex;
++        justify-content: space-between;
++        align-items: center;
++        flex-wrap: wrap; /* 제목이 지나치게 길어질 경우 자동으로 줄바꿈 허용 */
++      }
++      .site-title {
++        max-width: 80%; /* 우측 햄버거 메뉴가 차지할 공간(20%)을 안전하게 확보 */
++        word-break: break-all; /* 영문 등이 길어질 때 단어 단위 줄바꿈 방지 */
++        padding-right: 10px;
++        margin-right: 0;
++      }
++      .site-nav {
++        position: relative;
++        float: none; /* 기존 float 정렬 방식을 flexbox 내부 정렬로 대체 */
++      }
++      .site-nav .menu-icon {
++        padding: 10px 0;
++        margin-right: 0;
++      }
++    }
   </style>
 
   <div class="wrapper">
