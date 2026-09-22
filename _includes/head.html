@@ -15,24 +15,28 @@
 
 <!-- Multilingual hreflang configuration (Technical SEO) -->
 {% if page.lang %}
+  {% assign clean_path = page.url %}
+  {% assign all_lang_codes = "ko,en,ja,zh-TW,es,zh-tw,zh_tw" | split: "," %}
+  {% for lc in all_lang_codes %}
+    {% assign p_slash = '/' | append: lc | append: '/' %}
+    {% assign clean_path = clean_path | replace: p_slash, '/' %}
+  {% endfor %}
+
   {% assign active_languages = "ko,en,ja,zh-TW,es" | split: "," %}
   {% for l in active_languages %}
-    {% if page.lang == "ko" %}
-      {% assign base_path = page.url | replace_first: '/ko/', '/' %}
-    {% else %}
-      {% assign current_lang_prefix = '/' | append: page.lang | append: '/' %}
-      {% assign base_path = page.url | replace_first: current_lang_prefix, '/' %}
-    {% endif %}
-
     {% if l == "ko" %}
-      {% assign target_path = base_path | replace_first: '/why/', '/why/ko/' %}
+      {% assign target_path = clean_path %}
     {% else %}
-      {% assign target_prefix = '/why/' | append: l | append: '/' %}
-      {% assign target_path = base_path | replace_first: '/why/', target_prefix %}
+      {% assign lang_dir = '/' | append: l | append: '/' %}
+      {% if clean_path contains '/why/' %}
+        {% assign target_path = clean_path | replace_first: '/why/', '/why/' | replace_first: '/why/', lang_dir %}
+      {% else %}
+        {% assign target_path = lang_dir | append: clean_path | replace: '//', '/' %}
+      {% endif %}
     {% endif %}
     <link rel="alternate" hreflang="{{ l }}" href="{{ site.url }}{{ target_path }}" />
   {% endfor %}
-  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url }}" />
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ clean_path }}" />
 {% endif %}
-
+<!-- End Multilingual hreflang -->
 </head>

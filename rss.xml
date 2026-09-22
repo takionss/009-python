@@ -6,18 +6,18 @@ layout: null
   <channel>
     <title>{{ site.title | xml_escape }}</title>
     <description>{{ site.description | xml_escape }}</description>
-    <link>{{ site.url }}/</link>
-    <atom:link href="{{ site.url }}/rss.xml" rel="self" type="application/rss+xml"/>
+    <link>{{ site.url }}{{ site.baseurl }}/</link>
+    <atom:link href="{{ site.url }}{{ site.baseurl }}/rss.xml" rel="self" type="application/rss+xml"/>
     <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
     <generator>Jekyll v{{ jekyll.version }}</generator>
-    {% for post in site.posts limit:20 %}
+    {% for post in site.posts limit:10 %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.content | strip_html | xml_escape | truncatewords: 50 }}</description>
+        <description>{{ post.excerpt | strip_html | xml_escape }}</description>
         <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ post.url | absolute_url }}</link>
-        <guid isPermaLink="true">{{ post.url | absolute_url }}</guid>
+        <link>{{ site.url }}{{ site.baseurl }}{{ post.url }}</link>
+        <guid isPermaLink="true">{{ site.url }}{{ site.baseurl }}{{ post.url }}</guid>
       </item>
     {% endfor %}
   </channel>

@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /assets/
+Disallow: /search/
+Disallow: /tag/
+Disallow: /category/
+Disallow: /404.html
 
 Sitemap: https://python.smileslife.co.kr/sitemap.xml
+Sitemap: https://python.smileslife.co.kr/rss.xml
