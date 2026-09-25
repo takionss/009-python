@@ -14,10 +14,10 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
   - jekyll-paginate
-  - jekyll-seo-tag    # 검색엔진용 메타 태그 자동 생성
-  - jekyll-sitemap    # sitemap.xml 자동 생성
-  - jekyll-feed       # feed.xml (RSS) 자동 생성
   - jekyll-redirect-from
 
 paginate: 20
