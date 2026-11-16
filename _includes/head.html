@@ -42,6 +42,7 @@
 
 
 
+
 <!-- Multilingual hreflang configuration (Technical SEO) -->
 {% if page.lang %}
   {% assign clean_path = page.url %}
@@ -51,21 +52,25 @@
     {% assign clean_path = clean_path | replace: p_slash, '/' %}
   {% endfor %}
 
-  {% assign active_languages = "ko,en,ja,zh-TW,es" | split: "," %}
-  {% for l in active_languages %}
-    {% if l == "ko" %}
-      {% assign target_path = clean_path %}
+  {% assign lang_pairs = "ko:ko,en:en,ja:ja,zh-TW:zh-tw,es:es" | split: "," %}
+  {% for pair in lang_pairs %}
+    {% assign parts = pair | split: ":" %}
+    {% assign l_tag = parts[0] %}
+    {% assign l_url = parts[1] %}
+    {% assign l_dir = '/' | append: l_url | append: '/' %}
+    {% if clean_path contains '/why/' %}
+      {% assign target_path = clean_path | replace_first: '/why/', '/why/' | replace_first: '/why/', l_dir %}
     {% else %}
-      {% assign lang_dir = '/' | append: l | append: '/' %}
-      {% if clean_path contains '/why/' %}
-        {% assign target_path = clean_path | replace_first: '/why/', '/why/' | replace_first: '/why/', lang_dir %}
-      {% else %}
-        {% assign target_path = lang_dir | append: clean_path | replace: '//', '/' %}
-      {% endif %}
+      {% assign target_path = l_dir | append: clean_path | replace: '//', '/' %}
     {% endif %}
-    <link rel="alternate" hreflang="{{ l }}" href="{{ site.url }}{{ target_path }}" />
+    <link rel="alternate" hreflang="{{ l_tag }}" href="{{ site.url }}{{ target_path }}" />
   {% endfor %}
-  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ clean_path }}" />
+  {% if clean_path contains '/why/' %}
+    {% assign x_default_path = clean_path | replace_first: '/why/', '/why/ko/' %}
+  {% else %}
+    {% assign x_default_path = '/ko/' | append: clean_path | replace: '//', '/' %}
+  {% endif %}
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ x_default_path }}" />
 {% endif %}
 <!-- End Multilingual hreflang -->
 </head>
